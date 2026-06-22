@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MPDemo</string>
+    <string name="cat_fact">Cat Fact 😼</string>
+    <string name="get_another_fact">Get another one</string>
 </resources>

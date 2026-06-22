@@ -8,7 +8,7 @@ plugins {
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_11
+        jvmTarget = JvmTarget.JVM_17
     }
 }
 dependencies {
@@ -17,16 +17,20 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.material3)
     implementation(libs.material)
-    implementation(projects.sharedUI)
-
+    implementation(projects.sharedLogic)
     implementation(libs.androidx.activity.compose)
 
+    //Compose
     implementation(libs.compose.foundation)
     implementation(libs.compose.ui)
 
-
+    //Compose preview
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
+
+    //Koin android
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 }
 
 android {
@@ -36,7 +40,6 @@ android {
     defaultConfig {
         applicationId = "com.example.mpdemo"
         minSdk = libs.versions.android.minSdk.get().toInt()
-        //noinspection OldTargetApi
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
@@ -52,7 +55,7 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

@@ -1,0 +1,50 @@
+//
+//  CatFactScreen.swift
+//  iosApp
+//
+//  Created by Keval Thakkar on 22/06/26.
+//
+
+import SwiftUI
+
+struct CatFactScreen: View {
+
+    @State private var vm = CatFactScreenVM()
+
+    var body: some View {
+        VStack {
+            Spacer()
+
+            VStack(spacing: 20) {
+                Text("Cat Fact 😼")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+
+                if vm.isLoading {
+                    ProgressView()
+                } else {
+                    Text(vm.catFact?.fact ?? "")
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 24)
+                }
+            }
+
+            Spacer()
+
+            Button("Get another one") {
+                vm.getCatFact()
+            }
+            .buttonStyle(.bordered)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 24)
+        }
+        .onAppear {
+            vm.getCatFact()
+        }
+    }
+}
+
+#Preview {
+    CatFactScreen()
+}
