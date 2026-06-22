@@ -17,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -27,6 +28,7 @@ import com.example.mpdemo.R
 import com.example.mpdemo.data.CatFact
 import com.example.mpdemo.ui.theme.black
 import com.example.mpdemo.ui.theme.white
+import com.example.mpdemo.utils.haptic.HapticFeedback
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -45,6 +47,8 @@ fun CatFactScreenContent(
     state: CatFactScreenStates,
     onIntent: (CatFactScreenIntents) -> Unit
 ) {
+    val hapticFeedback = HapticFeedback(LocalContext.current)
+
     Box(
         modifier = Modifier
             .background(color = white)
@@ -87,7 +91,11 @@ fun CatFactScreenContent(
             Spacer(modifier = Modifier.weight(1f))
 
             Button(
-                onClick = { onIntent(CatFactScreenIntents.ClkRefresh) },
+                onClick = {
+                    hapticFeedback.vibrate()
+                    onIntent(CatFactScreenIntents.ClkRefresh)
+                },
+                enabled = !state.isLoading,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = stringResource(R.string.get_another_fact))

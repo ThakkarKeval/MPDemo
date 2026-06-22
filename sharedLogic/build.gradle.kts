@@ -53,6 +53,7 @@ kotlin {
             implementation(libs.ktor.client.logging)
         }
         androidMain.dependencies {
+            implementation(libs.androidx.annotation.jvm)
             implementation(libs.ktor.client.okhttp)
         }
         iosMain.dependencies {

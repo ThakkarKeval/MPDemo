@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SharedLogic
 
 struct CatFactScreen: View {
 
     @State private var vm = CatFactScreenVM()
+
+    let hapticFeedback = HapticFeedback()
 
     var body: some View {
         VStack {
@@ -32,12 +35,14 @@ struct CatFactScreen: View {
             Spacer()
 
             Button("Get another one") {
+                hapticFeedback.vibrate()
                 vm.getCatFact()
             }
             .buttonStyle(.bordered)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
+            .disabled(vm.isLoading)
         }
         .onAppear {
             vm.getCatFact()

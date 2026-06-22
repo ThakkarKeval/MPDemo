@@ -25,7 +25,8 @@ material = "1.14.0"
 activityKtx = "1.13.0"
 constraintlayout = "2.2.1"
 material3Version = "1.4.0"
-koin = "4.0.0"
+koin = "4.2.2"
+annotationJvm = "1.10.0"
 
 [libraries]
 androidx-foundation = { module = "androidx.compose.foundation:foundation" }
@@ -61,6 +62,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3Version" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
